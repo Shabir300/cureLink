@@ -5,9 +5,17 @@ import fs from 'fs';
 import path from 'path';
 
 // Initialize clients with credentials from the JSON file
-const credentialsPath = path.join(process.cwd(), 'google-credentials.json');
-const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
+// const credentialsPath = path.join(process.cwd(), 'google-credentials.json');
+// const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+
+// const speechClient = new SpeechClient({ credentials });
+// const ttsClient = new TextToSpeechClient({ credentials });
+
+// ✅ Load and parse Google credentials from environment variable
+const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY!);
+
+// ✅ Initialize clients with credentials
 const speechClient = new SpeechClient({ credentials });
 const ttsClient = new TextToSpeechClient({ credentials });
 
