@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'MediChain',
+  title: 'CureLink',
   description: 'Healthcare AI Platform MVP by Firebase Studio',
 };
 

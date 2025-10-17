@@ -1,4 +1,6 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { Logo } from '@/components/logo';
 import {
   Sidebar,
@@ -52,8 +54,8 @@ import { AuthProvider, useAuth } from '@/context/auth-context';
 import { AIChat } from '@/components/ai-chat/ai-chat'; // Import the AIChat component
 
 const patientNavItems = [
-  { href: '/patient', icon: Home, label: 'Dashboard' },
-  { href: '/patient/doctors', icon: Stethoscope, label: 'Find a Doctor' },
+  { href: '/patient', icon: Home, label: 'Find a Doctor' },
+  // { href: '/patient/doctors', icon: Stethoscope, label: 'Find a Doctor' },
   { href: '/patient/appointments', icon: Calendar, label: 'My Appointments' },
   { href: '/patient/orders', icon: ShoppingCart, label: 'My Orders' },
   { href: '/patient/records', icon: FileText, label: 'Medical Records' },
@@ -94,9 +96,21 @@ const getNavItems = (role: string) => {
 };
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const navItems = getNavItems(user?.role || '');
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      // setIsLoggingOut(true);
+      await logout();          // call context logout (signOut + setUser(null))
+      router.push('/');   // redirect to the login page
+    } catch (err) {
+      // optionally show toast here if you have a toast hook in this file
+      console.error('Logout error', err);
+    }
+  };
 
   return (
     <SidebarProvider>
@@ -147,7 +161,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </header>

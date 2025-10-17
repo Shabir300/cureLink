@@ -1,4 +1,4 @@
-# **App Name**: MediChain
+# **App Name**: CureLink
 
 ## Core Features:
 

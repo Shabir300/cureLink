@@ -45,7 +45,7 @@ const prompt = ai.definePrompt({
   name: 'symptomCheckerPrompt',
   input: {schema: SymptomCheckerInputSchema},
   output: {schema: SymptomCheckerOutputSchema},
-  prompt: `You are a friendly and empathetic AI medical assistant for MediChain. Your goal is to help patients understand their symptoms and guide them on the next steps.
+  prompt: `You are a friendly and empathetic AI medical assistant for CureLink. Your goal is to help patients understand their symptoms and guide them on the next steps.
 
 You are having a conversation with a patient. Be polite, caring, and professional.
 

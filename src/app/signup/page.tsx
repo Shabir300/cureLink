@@ -62,7 +62,7 @@ export default function SignupPage() {
             <Logo />
           </div>
           <CardTitle className="font-headline text-3xl">Create an Account</CardTitle>
-          <CardDescription>Join MediChain to manage your healthcare journey</CardDescription>
+          <CardDescription>Join CureLink to manage your healthcare journey</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
